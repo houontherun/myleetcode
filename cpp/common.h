@@ -1,10 +1,40 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <unordered_map>
 #include <string>
 #include <algorithm>
+#include <numeric>
 
 using namespace std;
+
+struct ListNode {
+	 int val;
+	 ListNode *next;
+	 ListNode(int x) : val(x), next(NULL) {}
+};
+
+ListNode* g_list(vector<int> l){
+	if (l.empty()){
+		return nullptr;
+	}
+	ListNode dummy(0);
+	ListNode* cur = &dummy;
+
+	for (auto v:l){
+		cur->next = new ListNode(v);
+		cur = cur->next;
+	}
+	return dummy.next;
+}
+
+void p_list(ListNode* l){
+	while (l){
+		cout << l->val << "    ";
+		l = l->next;
+	}
+	cout << endl;
+}
 
 
 struct TreeNode {
